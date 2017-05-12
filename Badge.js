@@ -5,15 +5,8 @@
  * Copyright (c) 2016 react-native-component <moonsunfall@aliyun.com>
  */
 
-import React, {
-    Component,
-    PropTypes,
-} from 'react'
-import {
-    View,
-    Text,
-    StyleSheet,
-} from 'react-native'
+import React, {Component, PropTypes} from "react";
+import {View, Text, StyleSheet, ViewPropTypes} from "react-native";
 
 const styles = StyleSheet.create({
     container: {
@@ -45,14 +38,14 @@ export default class Badge extends Component {
     static propTypes = {
         //borderRadius: PropTypes.number,   //number 18, null 5
         extraPaddingHorizontal: PropTypes.number,
-        style: View.propTypes.style,
+        style: ViewPropTypes.style,
         textStyle: Text.propTypes.style,
         minHeight: PropTypes.number,
         minWidth: PropTypes.number,
     }
 
     // 构造
-    constructor (props) {
+    constructor(props) {
         super(props)
         // 初始状态
         this.state = {}
@@ -60,7 +53,7 @@ export default class Badge extends Component {
         this._width = 0
     }
 
-    render () {
+    render() {
         return (
             <View ref={ component => this._container = component } style={[styles.container, this.props.style]}>
                 {this._renderChildren()}
@@ -68,7 +61,7 @@ export default class Badge extends Component {
         )
     }
 
-    _renderChildren () {
+    _renderChildren() {
         return React.Children.map(this.props.children, (child) => {
             if (!React.isValidElement(child)) {
                 return (
